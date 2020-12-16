@@ -43,16 +43,18 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     + type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
     + ntrain: number of training data		
     + ntest: number of test data
+    
     ```
-(eg) auto.load_data(“digit”, 60000, 10000)
+    (eg) auto.load_data(“digit”, 60000, 10000)
     ```
-output : MNIST and Fashion-MNIST data sets and their labels
-    ```
-(eg) MNIST_train.csv : train data set of MNIST
-    ```
-MNIST_train_label_csv:  train label data set of MNIST 
-MNIST_test.csv : test data set of MNIST
-MNIST_test_label_csv: test label data set of MNIST 
+    
+    output : MNIST and Fashion-MNIST data sets and their labels
+    
+
+    (eg) MNIST_train.csv : train data set of MNIST   
+         MNIST_train_label_csv:  train label data set of MNIST    
+         MNIST_test.csv : test data set of MNIST   
+         MNIST_test_label_csv: test label data set of MNIST    
 
 
 To load MNIST and Fashion-MNISY data from keras, run Load_MNIST_Data.py with following parameters.   
