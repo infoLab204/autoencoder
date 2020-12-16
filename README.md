@@ -33,16 +33,18 @@ We proposed a restorable autoencoder model as a non-linear method for reducing d
 * import the Python module 
     ```
     import autoencoder as auto
+    
     ```
 * Loading MNIST or Fashion-MNIST data sets
 To load MNIST or Fashion-MNISY data from keras, run load_data() with following parameters.
 
     ```
     auto.load_data(type, ntrain, ntest) 
+    
     ```
     + type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
     + ntrain: number of training data		
-    + ntest: number of test data
+    + ntest: number of test data    
     
     ```
     (eg) auto.load_data(“digit”, 60000, 10000)
@@ -52,36 +54,32 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     
 
     (eg) MNIST_train.csv : train data set of MNIST   
-         MNIST_train_label_csv:  train label data set of MNIST    
-         MNIST_test.csv : test data set of MNIST   
-         MNIST_test_label_csv: test label data set of MNIST    
+           MNIST_train_label_csv:  train label data set of MNIST    
+           MNIST_test.csv : test data set of MNIST   
+           MNIST_test_label_csv: test label data set of MNIST    
 
 
-To load MNIST and Fashion-MNISY data from keras, run Load_MNIST_Data.py with following parameters.   
+* Learning autoencoder models
+To learn the three autoencoder models, run proposed(), basic(), and stacked() for the proposed model, BAE, and SAE, respectively. The scripts will evaluate the units in the output layer. Outputs of the models will be the values of units in the output layer. 
+
+
     ```
-    import Load_MNIST_Data as LM
-    LM.choice_MINST_data(data_type, train, test)  
-    data_type:"digit" or "fashion, 	train: number of train, test: number of test,	
-
-    (eg) import Load_MNIST_Data as LM
-         LM.choice_MINST_data("digit", 60000, 10000) 
-    output : MNIST and Fashion-MNIST data sets
+    auto.proposed(type, train, test, code, epoch, batch)
     ```
-* Learning autoencoder models: Lab_Auto_Encoder.py, Basic_Auto_Encoder.py, Stacked_Basic_Auto_Encoder.py
-To learn the three autoencoder models, simply run a Lab_Auto_Encoder.py, Basic_Auto_Encoder.py, Stacked_Basic_Auto_Encoder.py for the proposed model, BAE, and SAE, respectively. The scripts will evaluate the units in the output layer. Outputs of the models will be the values of units in the output layer.
+    + type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
+    + train: train data		
+    + test: test data		
+    + code: number of nodes in the code layer
+    + epoch: number of epochs		
+    +  batch: batch size    
 
-    Run Lab_Auto_Encoder.py, Basic_Auto_Encoder.py, Stacked_Basic_Auto_Encoder.py with the following parameters
-    ```    
-    import Lab_Auto_Encoder as LA
-    LA.LAE(data_type, trainX, trainY, testX, testY, z_code, epoches, batch_size)
-    data_type:"digit" or "fashion, 	trainX, trainY: train data sets, testX, testY: test data sets,     
-    z_code : z_size, epoches : epoches size, batch_size : batch size
+    ```
+    (eg) auto.proposed(“digit”, “MNIST_train.csv”, “MNIST_test.csv”, 4, 200, 100)
+    ```
+    Output: loss function and values of units in the code and output layers.     
+    (eg) proposed_total_loss.csv		proposed_test_code4.csv		proposed_test_out4.csv    
+    (note) In a similar manner, learn basic() and stacked()    
 
-    (eg) import Lab_Auto_Encoder as LA 
-         LA.LAE("digit", "MNIST_X_train.csv", "MNIST_Y_train.csv", "MNIST_X_test.csv", "MNIST_Y_test.csv", 4, 200, 100)
-         Output: values of units in the output layers. 
-    ```     
-    Run Basic_Auto_Encoder.py and Stacked_Basic_Auto_Encoder.py for BAE and SAE in a similar manner.
 
 * Reconstructing input images: Visualize_model_result_Image.py
 To reconstruct input images, simply run Visualize_model_result_Image.py with the test images and values of units in the output layer as the input data set. Output will be the reconstructed images: test image, reconstructions by the proposed model, SAE, BAE,, and PCA.
