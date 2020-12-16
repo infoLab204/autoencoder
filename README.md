@@ -8,21 +8,24 @@ Lauto represents Python and R scripts to assess the proposed auto-encoder model 
 
 We proposed a restorable autoencoder model as a non-linear method for reducing dimensionality. The Python and R scripts provide the assessment of the proposed model and compare with other models in terms of the loss function, image reconstruction, and classification results. We provide Python and R scripts together in order for the readers to reproduce the results discussed in the manuscript.
 
-### Install prerequisites: 
-* R-packages: ggplot2, caret, e1071, nnet, dplyr, gridExtra
+### Install prerequisites:
+* R-packages: ggplot2, gridExtra, caret, e1071, nnet, dplyr
 * Python: tensorflow (version 2.2 or later), keras, numpy, matplotlib, datetime
 
-### Loading the scripts: 
-copy the following Python and R scripts from its GitHub repository
-* Load_MNIST_Data.py: loading data set, such as MNIST and Fashion-MNIST
-* Lab_Auto_Encoder.py: learning proposed autoencoder model
-* Basic_Auto_Encoder.py: learning basic autoencoder model
-* Stacked_Basic_Auto_Encoder.py: learning stacked autoencoder model
-* Visualize_model_result_Image.py: image reconstruction of proposed and compared models
-* MNIST_PCA.R: dimensionality reduction with principal component analysis
-* Calculate_loss.R: evaluating the loss function
-* Model_classification.R: performing classification analysis in terms of support vector machine and multiple logistic
- regression
+### Loading the scripts: copy the following Python module and R scripts from its GitHub repository
+    Python module: autoencoder.py
+    Python functions: 	
+        * load_data(): loading data set, such as MNIST and Fashion-MNIST
+        * proposed(): learning proposed autoencoder model
+        * basic(): learning basic autoencoder model
+        * stacked(): learning stacked autoencoder model
+        * recon(): image reconstruction of proposed and compared models
+        * split(): store loss function according to the class label
+    R functions:
+        * pca.R: dimensionality reduction with principal component analysis
+		      * classification.R: performing classification analysis in terms of support vector machine
+                            and multiple logistic regression
+
 
 ### Script tutorial
 * Loading MNIST and Fashion-MNIST data sets: Load_MNIST_Data.py   
