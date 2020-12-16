@@ -110,7 +110,7 @@ To get loss function for each class, run split() with test data set and their cl
     ```
     (eg) auto.split("MNIST_test.csv", "MNIST_test_label.csv", "LAE", 4)
     ```
-    __Output__: MNIST_loss_class0.csv, proposed_out4_class0.csv
+    __Output__: MNIST_test_loss_class0.csv, proposed_loss_out4_class0.csv
 
 ### R scripts tutorial
 * __Performing PCA for the dimensionality reduction__   
@@ -140,4 +140,5 @@ To classify MNIST and Fashion_MNIST data set, run classification.R with the code
     ```
     (eg) classification("MNIST_test.csv", "MNIST_test_label.csv", "LAE", 4, "SVM")
     ```
-    __Output__: classfier_result.csv
+    __Output__: classfier_result
+    __(eg)__ proposed_SVM_code4_clssifier_result.csv
