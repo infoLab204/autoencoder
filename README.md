@@ -24,7 +24,7 @@ copy the following Python and R scripts from its GitHub repository
 * Model_classification.R: performing classification analysis in terms of support vector machine and multiple logistic
  regression
 
-### R-script tutorial
+### Script tutorial
 * Loading MNIST and Fashion-MNIST data sets: Load_MNIST_Data.py   
 To load MNIST and Fashion-MNISY data from keras, run Load_MNIST_Data.py with following parameters.   
     ```
