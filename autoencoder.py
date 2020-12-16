@@ -114,7 +114,7 @@ def proposed(type, train, test, code, epoch, batch) :
         get_z = K.function([autoencoder[model_index].layers[0].input],[autoencoder[model_index].layers[2].output])
         test_z = get_z([X_test])[0]
 
-        np.savetxt("proposed_test_code_"+str(code)+".csv", test_z, delimiter=',')
+        np.savetxt("proposed_test_code"+str(code)+".csv", test_z, delimiter=',')
 
         model_index = model_index + 1
 
@@ -159,7 +159,7 @@ def proposed(type, train, test, code, epoch, batch) :
             if((data_index + 1) % 1000 == 0) :
                 print(str(data_index + 1) + " finish!")
 
-        np.savetxt("proposed_test_out_"+str(z_size)+".csv", test_recon, delimiter=',')
+        np.savetxt("proposed_test_out"+str(z_size)+".csv", test_recon, delimiter=',')
      
 
     # Print total loss
@@ -244,13 +244,13 @@ def basic(type, train,test, code, epoch, batch) :
 
         np.savetxt("basic_total_loss.csv", total_summary_loss_data, delimiter=',', fmt='%s')
 
-        np.savetxt("basic_test_out_"+str(z_size)+".csv", test_output, delimiter=',')    
+        np.savetxt("basic_test_out"+str(z_size)+".csv", test_output, delimiter=',')    
 
         # Get code(Z)
         get_z = K.function([autoencoder[model_index].layers[0].input],[autoencoder[model_index].layers[1].output])
         test_z = get_z([X_test])[0]
 
-        np.savetxt("basic_test_code_"+str(z_size)+".csv", test_z, delimiter=',')    
+        np.savetxt("basic_test_code"+str(z_size)+".csv", test_z, delimiter=',')    
 
         model_index = model_index + 1
 
@@ -395,14 +395,14 @@ def stacked(type, train, test, code,epoch, batch) :
 
         np.savetxt("stacked_total_loss.csv", total_summary_loss_data, delimiter=',', fmt='%s')
 
-        np.savetxt("stacked_test_out_"+str(z_size)+".csv", test_output, delimiter=',')    
+        np.savetxt("stacked_test_out"+str(z_size)+".csv", test_output, delimiter=',')    
 
         # Get code(Z)
 
         get_z = K.function([autoencoder[model_index].layers[0].input],[autoencoder[model_index].layers[2].output])
         test_z = get_z([X_test])[0]
 
-        np.savetxt("stacked_test_code_"+str(z_size)+".csv", test_z, delimiter=',')    
+        np.savetxt("stacked_test_code"+str(z_size)+".csv", test_z, delimiter=',')    
 
         model_index = model_index + 1
 
@@ -433,7 +433,7 @@ def recon(text, text_label, model, code) :
         
     for z_index in range(len(z_list)) :
         z_size = z_list[z_index]   
-        test_recon[z_index] = np.loadtxt(model + "_test_out_" + str(z_size) + ".csv", delimiter=',', dtype=None)
+        test_recon[z_index] = np.loadtxt(model + "_test_out" + str(z_size) + ".csv", delimiter=',', dtype=None)
         
             
     # Split each class
@@ -521,7 +521,7 @@ def split(test, test_label, model, code) :
     for z_index in range(len(z_list)) :
 
         z_size = z_list[z_index]
-        test_recon[z_index] = np.loadtxt(model+"_test_out_" + str(z_size) + ".csv", delimiter=',', dtype=None)
+        test_recon[z_index] = np.loadtxt(model+"_test_out" + str(z_size) + ".csv", delimiter=',', dtype=None)
         
 
     # Split each class
@@ -560,7 +560,7 @@ def split(test, test_label, model, code) :
         for z_index in range(len(z_list)) :
 
             z_size = z_list[z_index]
-            np.savetxt(model+"_test_out_" + str(z_size) + "_class" + str(class_index) + ".csv", test_recon_class[z_index][class_index], delimiter=',')
+            np.savetxt(model+"_test_out" + str(z_size) + "_class" + str(class_index) + ".csv", test_recon_class[z_index][class_index], delimiter=',')
             
     print("finish!")  
     
