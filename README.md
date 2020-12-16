@@ -89,7 +89,7 @@ To evaluate the loss function for all models, simply run Calculate_loss.R with t
 * Performing classification analysis in terms of support vector machine and multiple logistic regression: Model_classification.R
 To classify MNIST and Fashion_MNIST data set, run Model_classification.R with the codes of all models as the input data. Output will be the classification results.
 
-    Run classifier.R with the following parameters
+    Run Model_classification.R with the following parameters
     ```  
     model_class (testX, testY, choice_model, z_code,class_model)
     testX, testY, : text data set , choice_model : "LAE" or "BAE" or "SBAE" or "PCA", 
