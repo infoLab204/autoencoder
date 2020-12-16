@@ -13,7 +13,7 @@ We proposed a restorable autoencoder model as a non-linear method for reducing d
 * Python: tensorflow (version 2.2 or later), keras, numpy, matplotlib, datetime
 
 ### Loading the scripts: 
-copy the following Python module and R scripts from its GitHub repository
+   copy the following Python module and R scripts from its GitHub repository
 
 * Python module: autoencoder.py
 * Python functions: 	
@@ -40,8 +40,9 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     ```
     auto.load_data(type, ntrain, ntest) 
     ```
-    ·type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
-    ·ntrain: number of training data		·ntest: number of test data
+    + type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
+    + ntrain: number of training data		
+    + ntest: number of test data
     ```
 (eg) auto.load_data(“digit”, 60000, 10000)
     ```
