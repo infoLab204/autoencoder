@@ -140,5 +140,5 @@ To classify MNIST and Fashion_MNIST data set, run classification.R with the code
     ```
     (eg) classification("MNIST_test.csv", "MNIST_test_label.csv", "LAE", 4, "SVM")
     ```
-    __Output__: classfier_result
+    __Output__: classfier_result   
     __(eg)__ proposed_SVM_code4_clssifier_result.csv
