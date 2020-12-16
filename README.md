@@ -51,9 +51,9 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     
 
     __(eg)__ MNIST_train.csv : train data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
 
 
 * __Learning autoencoder models__
@@ -74,7 +74,7 @@ To learn the three autoencoder models, run proposed(), basic(), and stacked() fo
     (eg) auto.proposed(“digit”, “MNIST_train.csv”, “MNIST_test.csv”, 4, 200, 100)
     ```
     __Output__: loss function and values of units in the code and output layers.     
-    __(eg)__ proposed_total_loss.csv		proposed_test_code4.csv		proposed_test_out4.csv    
+    __(eg)__ proposed_total_loss.csv, proposed_test_code4.csv, proposed_test_out4.csv    
     __(note)__ In a similar manner, learn basic() and stacked()    
 
 
@@ -110,7 +110,7 @@ To get loss function for each class, run split() with test data set and their cl
     ```
     (eg) auto.split(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4)
     ```
-    __Output__: MNIST_loss_class0.csv
+    __Output__: MNIST_loss_class0.csv, proposed_out4_class0.csv
 
 ### R scripts tutorial
 * __Performing PCA for the dimensionality reduction__   
@@ -124,7 +124,7 @@ To reduce the dimensionality with PCA, simply run pca.R with MNIST and Fashion-M
     ```
     (eg) pca(MNIST_test.csv, 4)
     ```
-    __Output__: pca_code4.csv   pca_out4.csv
+    __Output__: pca_code4.csv, pca_out4.csv
 
 * __Performing classification analysis suing support vector machine and multiple logistic regression__        
 To classify MNIST and Fashion_MNIST data set, run classification.R with the codes of all models as the input data. Output will be the classification results.
