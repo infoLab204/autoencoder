@@ -555,12 +555,11 @@ def split(test, test_label, model, code) :
 
     # Save data
     for class_index in range(10) :
-        np.savetxt("MNIST_test_class" + str(class_index) + ".csv", X_test_class[class_index], delimiter=',')
+        np.savetxt("MNIST_loss_class" + str(class_index) + ".csv", X_test_class[class_index], delimiter=',')
 
         for z_index in range(len(z_list)) :
-
             z_size = z_list[z_index]
-            np.savetxt(model+"_test_out" + str(z_size) + "_class" + str(class_index) + ".csv", test_recon_class[z_index][class_index], delimiter=',')
+            np.savetxt(model+"_loss_out" + str(z_size) + "_class" + str(class_index) + ".csv", test_recon_class[z_index][class_index], delimiter=',')
             
     print("finish!")  
     

@@ -47,8 +47,7 @@ classification <- function(test, test_label, model, code,classifier) {
       
       # SVM Tuning (with 10% data)
       
-      Start_Time <- Sys.time()
-      
+
       tune_kf <- 10
       tune_idx <- createFolds(factor(y_test), k = tune_kf)
       
@@ -68,20 +67,14 @@ classification <- function(test, test_label, model, code,classifier) {
       tuning_data <- tuning_data[rows, ]
       
       tune <- tune.svm(as.factor(label) ~ ., data = tuning_data, gamma = 10^c(-3:3), cost = 10^c(-3:3))
-      
-      End_Time <- Sys.time()
-      
-      Run_Time <- End_Time - Start_Time
+
       
       print(paste0("SVM Tuning, z size : ", z_size, ", finish!"))
-      print(Run_Time)
-      
+
       # Run SVM
-      
       for(data_index in 1:length(data_list)){
         
-        Start_Time <- Sys.time()
-        
+
         model_type <- model_list[data_index]
         
         train_data <- data_list[[data_index]]
@@ -129,13 +122,10 @@ classification <- function(test, test_label, model, code,classifier) {
             total_classifi_data <- rbind(total_classifi_data, classifi_data)
           }
         }
-        
-        End_Time <- Sys.time()
-        
-        Run_Time <- End_Time - Start_Time
+
         
         print(paste0("classifi method : ", classifi_method, ", z size : ", z_size, ", model type : ", model_type, ", finish!"))
-        print(Run_Time)
+
         
       }
       
@@ -152,13 +142,14 @@ classification <- function(test, test_label, model, code,classifier) {
                 bacc_mean = mean(bacc), 
                 bacc_se = sd(bacc)/sqrt(n()))
     
-    # write.csv(summary_classifi_data, file = paste0(data_type, "_summary_classifi_data.csv"), row.names = F)
+    
     
     selected_method <- "SVM" # "SVM" or "MLR"
     selected_z <- code # 4, 8, 12, 16, 20
     
     selected_data <- summary_classifi_data[summary_classifi_data$classifi_method == selected_method & summary_classifi_data$z_size == selected_z, ]
-    write.csv(selected_data, file = paste0(model,"_",classifier,"_",code,"_classifi_data.csv"), row.names = F)
+    
+    write.csv(selected_data, file = paste0(model,"_",classifier,"_code",code,"_classifier_result.csv"), row.names = F)
     
     
     p1 <- ggplot(selected_data, aes(x = class_num, y = sensi_mean, group = model_type, color = model_type)) + geom_errorbar(aes(ymax = sensi_mean + sensi_se, ymin = sensi_mean - sensi_se), width = 0.5, size = 1) + scale_x_continuous(breaks = c(0:9)) + ggtitle(paste0(data_type, ", Z = ", selected_z,", ", selected_method, ", Sensitivity")) + theme(text = element_text(size = 12), plot.title = element_text(hjust = 0.5))
@@ -181,8 +172,6 @@ classification <- function(test, test_label, model, code,classifier) {
       comp_value <- ncol(data)
       
       for(data_index in 1:length(data_list)){
-        
-        Start_Time <- Sys.time()
         
         model_type <- model_list[data_index]
         
@@ -231,13 +220,10 @@ classification <- function(test, test_label, model, code,classifier) {
             total_classifi_data <- rbind(total_classifi_data, classifi_data)
           }
         }
-        
-        End_Time <- Sys.time()
-        
-        Run_Time <- End_Time - Start_Time
+
         
         print(paste0("classifi method : ", classifi_method, ", z size : ", z_size, ", model type : ", model_type, ", finish!"))
-        print(Run_Time)
+
         
       }
       
@@ -260,7 +246,7 @@ classification <- function(test, test_label, model, code,classifier) {
     
     selected_data <- summary_classifi_data[summary_classifi_data$classifi_method == selected_method & summary_classifi_data$z_size == selected_z, ]
     
-    write.csv(selected_data, file = paste0(model,"_",classifier,"_",code,"_classifi_data.csv"), row.names = F)
+    write.csv(selected_data, file = paste0(model,"_",classifier,"_code",code,"_classifier_result.csv"), row.names = F)
     
    
     p1 <- ggplot(selected_data, aes(x = class_num, y = sensi_mean, group = model_type, color = model_type)) + geom_errorbar(aes(ymax = sensi_mean + sensi_se, ymin = sensi_mean - sensi_se), width = 0.5, size = 1) + scale_x_continuous(breaks = c(0:9)) + ggtitle(paste0(data_type, ", Z = ", selected_z,", ", selected_method, ", Sensitivity")) + theme(text = element_text(size = 12), plot.title = element_text(hjust = 0.5))
