@@ -79,7 +79,7 @@ To learn the three autoencoder models, run proposed(), basic(), and stacked() fo
     (note) In a similar manner, learn basic() and stacked()    
 
 
-* Reconstructing input images
+* Reconstructing input images    
 To reconstruct input images, simply run recon() with the test images and values of units in the output layer as the input data set. Output will be the reconstructed images: test image, reconstructions by the proposed model, SAE, BAE, and PCA.
 
 
@@ -97,36 +97,48 @@ To reconstruct input images, simply run recon() with the test images and values 
     ```
     Output: reconstructed images
 
-* Performing PCA for the dimensionality reduction: MNIST_PCA.R
-To reduce the dimensionality with PCA, simply run MNIST_PCA.R with MNIST and Fashion-MNIST as input data sets. Output will be the codes. 
+* Store loss function according to the class labels    
+To get loss function for each class, run split() with test data set and their class labels. Output will be loss functions of test data set for each class label.
 
-    Run MNIST_PCA.R with the following parameters
     ```  
-    MNIST_PCA(testX, z_code) 
-    testX : text data, z_code : z_size
+    auto.split(test, test_label, model, code)
+    ```  
+    + test: test data		
+    + test_label: label of each test datum
+    + model: used model: “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
+    + code: number of nodes in the code layer
     
-    (eg) MNIST_PCA("MNIST_X_test.csv", 4)
+    ```
+    (eg) auto.split(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4)
+    ```
+    Output: MNIST_loss_class0.csv
 
-     ```  
-* Evaluating the loss function for the proposed model, SAE, BAE, and PCA: Calculate_loss.R
-To evaluate the loss function for all models, simply run Calculate_loss.R with the output of Lab_Auto_Encoder.py, Basic_Auto_Encoder.py, Stacked_Basic_Auto_Encoder.py, and MNIST_PCA.R, together with MNIST and Fashion-MNIST data sets. Output will be the loss function of all models.
+### R scripts tutorial
+* Performing PCA for the dimensionality reduction    
+To reduce the dimensionality with PCA, simply run pca.R with MNIST and Fashion-MNIST as input data sets. Output will be the dimensionality-reduced codes. 
+    ```
+    pca(test, code)
+    ```
+    + test: test data			
+    + code: number of nodes in the code layer
+    
+    ```
+    (eg) pca(MNIST_test.csv, 4)
+    ```
+    Output: pca_code4.csv   pca_out4.csv
 
-    Calculate_loss.R with the following parameters
-    ```  
-    cal_loss(testX, choice_model, z_code)
-    testX : text data, choice_model : "LAE" or "BAE" or "SBAE" or "PCA", z_code : z_size
-
-    (eg) cal_loss("MNIST_X_test.csv","BAE",4)
-
-     ```  
-* Performing classification analysis in terms of support vector machine and multiple logistic regression: Model_classification.R
-To classify MNIST and Fashion_MNIST data set, run Model_classification.R with the codes of all models as the input data. Output will be the classification results.
-
-    Run Model_classification.R with the following parameters
-    ```  
-    model_class (testX, testY, choice_model, z_code,class_model)
-    testX, testY, : text data set , choice_model : "LAE" or "BAE" or "SBAE" or "PCA", 
-    z_code : z_size, class_model : "SVM" or "MLR"
-
-    (eg) model_class("MNIST_X_test.csv", "MNIST_Y_test.csv","BAE", 4, "SVM")
-     ```  
+* Performing classification analysis suing support vector machine and multiple logistic regression        
+To classify MNIST and Fashion_MNIST data set, run classification.R with the codes of all models as the input data. Output will be the classification results.
+    ```
+    classification(test, test_label, model, code, classifier)
+    ```
+    + test: test data		
+    + test_label: label of each test datum
+    + model: used model: “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
+    + code: number of nodes in the code layer
+	 + classifier: either “SVM” or “MLR”
+    
+    ```
+    (eg) classification(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4, “SVM”)
+    ```
+    Output: classfier_result.csv
