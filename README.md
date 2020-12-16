@@ -12,7 +12,8 @@ We proposed a restorable autoencoder model as a non-linear method for reducing d
 * R-packages: ggplot2, gridExtra, caret, e1071, nnet, dplyr
 * Python: tensorflow (version 2.2 or later), keras, numpy, matplotlib, datetime
 
-### Loading the scripts: copy the following Python module and R scripts from its GitHub repository
+### Loading the scripts: 
+copy the following Python module and R scripts from its GitHub repository
     Python module: autoencoder.py
     Python functions: 	
         * load_data(): loading data set, such as MNIST and Fashion-MNIST
@@ -23,12 +24,34 @@ We proposed a restorable autoencoder model as a non-linear method for reducing d
         * split(): store loss function according to the class label
     R functions:
         * pca.R: dimensionality reduction with principal component analysis
-		      * classification.R: performing classification analysis in terms of support vector machine
+        * classification.R: performing classification analysis in terms of support vector machine
                             and multiple logistic regression
 
 
-### Script tutorial
-* Loading MNIST and Fashion-MNIST data sets: Load_MNIST_Data.py   
+### Python scripts tutorial
+* import the Python module 
+    import autoencoder as auto
+
+* Loading MNIST or Fashion-MNIST data sets
+To load MNIST or Fashion-MNISY data from keras, run load_data() with following parameters.
+
+    ```
+    auto.load_data(type, ntrain, ntest) 
+    ```
+    type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
+    ntrain: number of training data		ntest: number of test data
+    ```
+(eg) auto.load_data(“digit”, 60000, 10000)
+    ```
+output : MNIST and Fashion-MNIST data sets and their labels
+    ```
+(eg) MNIST_train.csv : train data set of MNIST
+    ```
+MNIST_train_label_csv:  train label data set of MNIST 
+MNIST_test.csv : test data set of MNIST
+MNIST_test_label_csv: test label data set of MNIST 
+
+
 To load MNIST and Fashion-MNISY data from keras, run Load_MNIST_Data.py with following parameters.   
     ```
     import Load_MNIST_Data as LM
