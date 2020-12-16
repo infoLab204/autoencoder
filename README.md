@@ -140,8 +140,8 @@ To classify MNIST and Fashion_MNIST data set, run classification.R with the code
     ```
     (eg) classification("MNIST_test.csv", "MNIST_test_label.csv", "LAE", 4, "SVM")
     ```
-    __Output__: classfier_result   
-    __(eg)__ proposed_SVM_code4_clssifier_result.csv
+    __Output__: proposed_SVM_code4_clssifier_result.csv     
+
     
  * __Evaluating the loss function for the proposed model, SAE, BAE, and PCA__   
  To evaluate the loss function for all models, simply run loss.R with the output of split(), together with MNIST and Fashion-MNIST data sets. Output will be the loss function of all models.    
@@ -156,5 +156,5 @@ To classify MNIST and Fashion_MNIST data set, run classification.R with the code
     ```
     (eg) loss("MNIST_test.csv", "LAE", 4)
     ```
-    __Output__: proposed_total_loss4.csv, proposed_class_loss4.csv  
+    __Output__: loss boxplot graph, proposed_total_loss4.csv, proposed_class_loss4.csv  
 
