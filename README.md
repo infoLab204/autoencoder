@@ -32,19 +32,17 @@ We proposed a restorable autoencoder model as a non-linear method for reducing d
 ### Python scripts tutorial
 * import the Python module 
     ```
-    import autoencoder as auto
-    
+    import autoencoder as auto    
     ```
 * Loading MNIST or Fashion-MNIST data sets
 To load MNIST or Fashion-MNISY data from keras, run load_data() with following parameters.
 
     ```
-    auto.load_data(type, ntrain, ntest) 
-    
+    auto.load_data(type, ntrain, ntest)     
     ```
     + type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
     + ntrain: number of training data		
-    + ntest: number of test data    
+    + ntest: number of test data <br>   
     
     ```
     (eg) auto.load_data(“digit”, 60000, 10000)
@@ -54,9 +52,9 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     
 
     (eg) MNIST_train.csv : train data set of MNIST   
-           MNIST_train_label_csv:  train label data set of MNIST    
-           MNIST_test.csv : test data set of MNIST   
-           MNIST_test_label_csv: test label data set of MNIST    
+               MNIST_train_label_csv:  train label data set of MNIST    
+               MNIST_test.csv : test data set of MNIST   
+               MNIST_test_label_csv: test label data set of MNIST    
 
 
 * Learning autoencoder models
@@ -71,7 +69,7 @@ To learn the three autoencoder models, run proposed(), basic(), and stacked() fo
     + test: test data		
     + code: number of nodes in the code layer
     + epoch: number of epochs		
-    +  batch: batch size    
+    +  batch: batch size  <br>  
 
     ```
     (eg) auto.proposed(“digit”, “MNIST_train.csv”, “MNIST_test.csv”, 4, 200, 100)
@@ -81,18 +79,24 @@ To learn the three autoencoder models, run proposed(), basic(), and stacked() fo
     (note) In a similar manner, learn basic() and stacked()    
 
 
-* Reconstructing input images: Visualize_model_result_Image.py
-To reconstruct input images, simply run Visualize_model_result_Image.py with the test images and values of units in the output layer as the input data set. Output will be the reconstructed images: test image, reconstructions by the proposed model, SAE, BAE,, and PCA.
-Run Visualize_model_result_Image.py with the following parameters
+* Reconstructing input images
+To reconstruct input images, simply run recon() with the test images and values of units in the output layer as the input data set. Output will be the reconstructed images: test image, reconstructions by the proposed model, SAE, BAE, and PCA.
+
+
+    ```
+    auto.recon(test, test_label, model, code)
+    ```
+    + test: test data		
+    + test_label: label of each test datum
+    + model: used model. “LAE” for proposed, “BAE” for basic, “SAE” for stacked,	and “PCA” for principal component analysis
+    + code: number of nodes in the code layer
+  
+
     ```  
-     import Visualize_Model_Result_Image as VMI
-     VMI.visualize_image(testX, testY, choice_model, z_code)
-     testX, testY: text data sets, choice_model : "LAE" or "BAE" or "SBAE" or "PCA",  z_code : z_size
-     
-     (eg) import visualize_model_result_image as VMI 
-          VMI.visualize_image("MNIST_X_test.csv", "MNIST_Y_test.csv","BAE",20)
-    ```   
-    
+    (eg) auto.recon(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4)
+    ```
+    Output: reconstructed images
+
 * Performing PCA for the dimensionality reduction: MNIST_PCA.R
 To reduce the dimensionality with PCA, simply run MNIST_PCA.R with MNIST and Fashion-MNIST as input data sets. Output will be the codes. 
 
