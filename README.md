@@ -14,17 +14,18 @@ We proposed a restorable autoencoder model as a non-linear method for reducing d
 
 ### Loading the scripts: 
 copy the following Python module and R scripts from its GitHub repository
-    Python module: autoencoder.py
-    Python functions: 	
-        * load_data(): loading data set, such as MNIST and Fashion-MNIST
-        * proposed(): learning proposed autoencoder model
-        * basic(): learning basic autoencoder model
-        * stacked(): learning stacked autoencoder model
-        * recon(): image reconstruction of proposed and compared models
-        * split(): store loss function according to the class label
-    R functions:
-        * pca.R: dimensionality reduction with principal component analysis
-        * classification.R: performing classification analysis in terms of support vector machine
+
+* Python module: autoencoder.py
+* Python functions: 	
+    + load_data(): loading data set, such as MNIST and Fashion-MNIST
+    + proposed(): learning proposed autoencoder model
+    + basic(): learning basic autoencoder model
+    + stacked(): learning stacked autoencoder model
+    + recon(): image reconstruction of proposed and compared models
+    + split(): store loss function according to the class label
+* R functions:
+    + pca.R: dimensionality reduction with principal component analysis
+    + classification.R: performing classification analysis in terms of support vector machine
                             and multiple logistic regression
 
 
