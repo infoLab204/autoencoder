@@ -56,7 +56,7 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
 
 
-* __Learning autoencoder models__
+* __Learning autoencoder models__    
 To learn the three autoencoder models, run proposed(), basic(), and stacked() for the proposed model, BAE, and SAE, respectively. The scripts will evaluate the units in the output layer. Outputs of the models will be the values of units in the output layer. 
 
 
