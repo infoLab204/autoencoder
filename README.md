@@ -33,7 +33,7 @@ We proposed a restorable autoencoder model as a non-linear method for reducing d
     ```
     import autoencoder as auto    
     ```
-* Loading MNIST or Fashion-MNIST data sets
+* __Loading MNIST or Fashion-MNIST data sets__    
 To load MNIST or Fashion-MNISY data from keras, run load_data() with following parameters.
 
     ```
@@ -51,93 +51,93 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     
 
     __(eg)__ MNIST_train.csv : train data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
 
 
-* Learning autoencoder models
+* __Learning autoencoder models__
 To learn the three autoencoder models, run proposed(), basic(), and stacked() for the proposed model, BAE, and SAE, respectively. The scripts will evaluate the units in the output layer. Outputs of the models will be the values of units in the output layer. 
 
 
     ```
     auto.proposed(type, train, test, code, epoch, batch)
     ```
-    + type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
-    + train: train data		
-    + test: test data		
-    + code: number of nodes in the code layer
-    + epoch: number of epochs		
-    +  batch: batch size  <br><br>  
+    + __type__: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
+    + __train__: train data		
+    + __test__: test data		
+    + __code__: number of nodes in the code layer
+    + __epoch__: number of epochs		
+    + __batch__: batch size  <br><br>  
 
     ```
     (eg) auto.proposed(“digit”, “MNIST_train.csv”, “MNIST_test.csv”, 4, 200, 100)
     ```
-    Output: loss function and values of units in the code and output layers.     
-    (eg) proposed_total_loss.csv		proposed_test_code4.csv		proposed_test_out4.csv    
-    (note) In a similar manner, learn basic() and stacked()    
+    __Output__: loss function and values of units in the code and output layers.     
+    __(eg)__ proposed_total_loss.csv		proposed_test_code4.csv		proposed_test_out4.csv    
+    __(note)__ In a similar manner, learn basic() and stacked()    
 
 
-* Reconstructing input images    
+* __Reconstructing input images__    
 To reconstruct input images, simply run recon() with the test images and values of units in the output layer as the input data set. Output will be the reconstructed images: test image, reconstructions by the proposed model, SAE, BAE, and PCA.
 
 
     ```
     auto.recon(test, test_label, model, code)
     ```
-    + test: test data		
-    + test_label: label of each test datum
-    + model: used model. “LAE” for proposed, “BAE” for basic, “SAE” for stacked,	and “PCA” for principal component analysis
-    + code: number of nodes in the code layer
+    + __test__: test data		
+    + __test_label__: label of each test datum
+    + __model__: used model. “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
+    + __code__: number of nodes in the code layer<br><br>
   
 
     ```  
     (eg) auto.recon(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4)
     ```
-    Output: reconstructed images
+    __Output__: reconstructed images
 
-* Store loss function according to the class labels    
+* __Store loss function according to the class labels__    
 To get loss function for each class, run split() with test data set and their class labels. Output will be loss functions of test data set for each class label.
 
     ```  
     auto.split(test, test_label, model, code)
     ```  
-    + test: test data		
-    + test_label: label of each test datum
-    + model: used model: “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
-    + code: number of nodes in the code layer
+    + __test__: test data		
+    + __test_label__: label of each test datum
+    + __model__: used model: “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
+    + __code__: number of nodes in the code layer<br><br>
     
     ```
     (eg) auto.split(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4)
     ```
-    Output: MNIST_loss_class0.csv
+    __Output__: MNIST_loss_class0.csv
 
 ### R scripts tutorial
-* Performing PCA for the dimensionality reduction    
+* __Performing PCA for the dimensionality reduction__   
 To reduce the dimensionality with PCA, simply run pca.R with MNIST and Fashion-MNIST as input data sets. Output will be the dimensionality-reduced codes. 
     ```
     pca(test, code)
     ```
-    + test: test data			
-    + code: number of nodes in the code layer
+    + __test__: test data			
+    + __code__: number of nodes in the code layer<br><br>
     
     ```
     (eg) pca(MNIST_test.csv, 4)
     ```
-    Output: pca_code4.csv   pca_out4.csv
+    __Output__: pca_code4.csv   pca_out4.csv
 
-* Performing classification analysis suing support vector machine and multiple logistic regression        
+* __Performing classification analysis suing support vector machine and multiple logistic regression__        
 To classify MNIST and Fashion_MNIST data set, run classification.R with the codes of all models as the input data. Output will be the classification results.
     ```
     classification(test, test_label, model, code, classifier)
     ```
-    + test: test data		
-    + test_label: label of each test datum
-    + model: used model: “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
-    + code: number of nodes in the code layer
-	 + classifier: either “SVM” or “MLR”
+    + __test__: test data		
+    + __test_label__: label of each test datum
+    + __model__: used model: “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
+    + __code__: number of nodes in the code layer
+	 + classifier: either “SVM” or “MLR” <br><br>
     
     ```
     (eg) classification(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4, “SVM”)
     ```
-    Output: classfier_result.csv
+    __Output__: classfier_result.csv
