@@ -39,12 +39,12 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     ```
     auto.load_data(type, ntrain, ntest)     
     ```
-    + __type__: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
+    + __type__: data type, either "digit" for MNIST or "fashion" for Fashion-MNIST
     + __ntrain__: number of training data		
     + __ntest__: number of test data <br><br>   
     
     ```
-    (eg) auto.load_data(“digit”, 60000, 10000)
+    (eg) auto.load_data("digit", 60000, 10000)
     ```
     
     __output__ : MNIST and Fashion-MNIST data sets and their labels
@@ -63,7 +63,7 @@ To learn the three autoencoder models, run proposed(), basic(), and stacked() fo
     ```
     auto.proposed(type, train, test, code, epoch, batch)
     ```
-    + __type__: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
+    + __type__: data type, either "digit" for MNIST or "fashion" for Fashion-MNIST
     + __train__: train data		
     + __test__: test data		
     + __code__: number of nodes in the code layer
@@ -71,7 +71,7 @@ To learn the three autoencoder models, run proposed(), basic(), and stacked() fo
     + __batch__: batch size  <br><br>  
 
     ```
-    (eg) auto.proposed(“digit”, “MNIST_train.csv”, “MNIST_test.csv”, 4, 200, 100)
+    (eg) auto.proposed("digit", "MNIST_train.csv", "MNIST_test.csv", 4, 200, 100)
     ```
     __Output__: loss function and values of units in the code and output layers.     
     __(eg)__ proposed_total_loss.csv, proposed_test_code4.csv, proposed_test_out4.csv    
@@ -87,12 +87,12 @@ To reconstruct input images, simply run recon() with the test images and values 
     ```
     + __test__: test data		
     + __test_label__: label of each test datum
-    + __model__: used model. “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
+    + __model__: used model. "LAE" for proposed, "BAE" for basic, "SAE" for stacked, and "PCA" for principal component analysis
     + __code__: number of nodes in the code layer<br><br>
   
 
     ```  
-    (eg) auto.recon(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4)
+    (eg) auto.recon("MNIST_test.csv", "MNIST_test_label.csv", "LAE", 4)
     ```
     __Output__: reconstructed images
 
@@ -104,11 +104,11 @@ To get loss function for each class, run split() with test data set and their cl
     ```  
     + __test__: test data		
     + __test_label__: label of each test datum
-    + __model__: used model: “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
+    + __model__: used model: "LAE" for proposed, "BAE" for basic, "SAE" for stacked, and "PCA" for principal component analysis
     + __code__: number of nodes in the code layer<br><br>
     
     ```
-    (eg) auto.split(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4)
+    (eg) auto.split("MNIST_test.csv", "MNIST_test_label.csv", "LAE", 4)
     ```
     __Output__: MNIST_loss_class0.csv, proposed_out4_class0.csv
 
@@ -122,7 +122,7 @@ To reduce the dimensionality with PCA, simply run pca.R with MNIST and Fashion-M
     + __code__: number of nodes in the code layer<br><br>
     
     ```
-    (eg) pca(MNIST_test.csv, 4)
+    (eg) pca("MNIST_test.csv", 4)
     ```
     __Output__: pca_code4.csv, pca_out4.csv
 
@@ -133,11 +133,11 @@ To classify MNIST and Fashion_MNIST data set, run classification.R with the code
     ```
     + __test__: test data		
     + __test_label__: label of each test datum
-    + __model__: used model: “LAE” for proposed, “BAE” for basic, “SAE” for stacked, and “PCA” for principal component analysis
+    + __model__: used model: "LAE" for proposed, "BAE" for basic, "SAE" for stacked, and “PCA” for principal component analysis
     + __code__: number of nodes in the code layer
 	 + classifier: either “SVM” or “MLR” <br><br>
     
     ```
-    (eg) classification(MNIST_test.csv, MNIST_test_label.csv, “LAE”, 4, “SVM”)
+    (eg) classification("MNIST_test.csv", "MNIST_test_label.csv", "LAE", 4, "SVM")
     ```
     __Output__: classfier_result.csv
