@@ -41,7 +41,7 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     ```
     + __type__: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
     + __ntrain__: number of training data		
-    + __ntest__: number of test data <br>   
+    + __ntest__: number of test data <br><br>   
     
     ```
     (eg) auto.load_data(“digit”, 60000, 10000)
@@ -51,9 +51,9 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     
 
     __(eg)__ MNIST_train.csv : train data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
 
 
 * Learning autoencoder models
@@ -68,7 +68,7 @@ To learn the three autoencoder models, run proposed(), basic(), and stacked() fo
     + test: test data		
     + code: number of nodes in the code layer
     + epoch: number of epochs		
-    +  batch: batch size  <br>  
+    +  batch: batch size  <br><br>  
 
     ```
     (eg) auto.proposed(“digit”, “MNIST_train.csv”, “MNIST_test.csv”, 4, 200, 100)
