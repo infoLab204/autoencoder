@@ -30,16 +30,17 @@ copy the following Python module and R scripts from its GitHub repository
 
 ### Python scripts tutorial
 * import the Python module 
+    ```
     import autoencoder as auto
-
+    ```
 * Loading MNIST or Fashion-MNIST data sets
 To load MNIST or Fashion-MNISY data from keras, run load_data() with following parameters.
 
     ```
     auto.load_data(type, ntrain, ntest) 
     ```
-    type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
-    ntrain: number of training data		ntest: number of test data
+    ·type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
+    ·ntrain: number of training data		·ntest: number of test data
     ```
 (eg) auto.load_data(“digit”, 60000, 10000)
     ```
