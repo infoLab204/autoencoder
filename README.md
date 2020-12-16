@@ -9,24 +9,23 @@ Lauto represents Python and R scripts to assess the proposed auto-encoder model 
 We proposed a restorable autoencoder model as a non-linear method for reducing dimensionality. The Python and R scripts provide the assessment of the proposed model and compare with other models in terms of the loss function, image reconstruction, and classification results. We provide Python and R scripts together in order for the readers to reproduce the results discussed in the manuscript.
 
 ### Install prerequisites:
-* R-packages: ggplot2, gridExtra, caret, e1071, nnet, dplyr
-* Python: tensorflow (version 2.2 or later), keras, numpy, matplotlib, datetime
+* __R-packages__: ggplot2, gridExtra, caret, e1071, nnet, dplyr
+* __Python__: tensorflow (version 2.2 or later), keras, numpy, matplotlib, datetime
 
 ### Loading the scripts: 
    copy the following Python module and R scripts from its GitHub repository
 
-* Python module: autoencoder.py
+* Python module: __autoencoder.py__
 * Python functions: 	
-    + load_data(): loading data set, such as MNIST and Fashion-MNIST
-    + proposed(): learning proposed autoencoder model
-    + basic(): learning basic autoencoder model
-    + stacked(): learning stacked autoencoder model
-    + recon(): image reconstruction of proposed and compared models
-    + split(): store loss function according to the class label
+    + __load_data()__: loading data set, such as MNIST and Fashion-MNIST
+    + __proposed()__: learning proposed autoencoder model
+    + __basic()__: learning basic autoencoder model
+    + __stacked()__: learning stacked autoencoder model
+    + __recon()__: image reconstruction of proposed and compared models
+    + __split()__: store loss function according to the class label
 * R functions:
-    + pca.R: dimensionality reduction with principal component analysis
-    + classification.R: performing classification analysis in terms of support vector machine
-                            and multiple logistic regression
+    + __pca.R__: dimensionality reduction with principal component analysis
+    + __classification.R__: performing classification analysis in terms of support vector machine and multiple logistic regression
 
 
 ### Python scripts tutorial
@@ -40,21 +39,21 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     ```
     auto.load_data(type, ntrain, ntest)     
     ```
-    + type: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
-    + ntrain: number of training data		
-    + ntest: number of test data <br>   
+    + __type__: data type, either “digit” for MNIST or “fashion” for Fashion-MNIST
+    + __ntrain__: number of training data		
+    + __ntest__: number of test data <br>   
     
     ```
-    (eg) auto.load_data(“digit”, 60000, 10000)
+    __(eg)__ auto.load_data(“digit”, 60000, 10000)
     ```
     
-    output : MNIST and Fashion-MNIST data sets and their labels
+    __output__ : MNIST and Fashion-MNIST data sets and their labels
     
 
-    (eg) MNIST_train.csv : train data set of MNIST   
-               MNIST_train_label_csv:  train label data set of MNIST    
-               MNIST_test.csv : test data set of MNIST   
-               MNIST_test_label_csv: test label data set of MNIST    
+    __(eg)__ MNIST_train.csv : train data set of MNIST   
+&nbsp;&nbsp;&nbsp;nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
+&nbsp;&nbsp;&nbsp;nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
+&nbsp;&nbsp;&nbsp;nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
 
 
 * Learning autoencoder models
