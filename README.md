@@ -135,7 +135,7 @@ To classify MNIST and Fashion_MNIST data set, run classification.R with the code
     + __test_label__: label of each test datum
     + __model__: used model: "LAE" for proposed, "BAE" for basic, "SAE" for stacked, and “PCA” for principal component analysis
     + __code__: number of nodes in the code layer
-	 + classifier: either “SVM” or “MLR” <br><br>
+	 + classifier: either "SVM" or "MLR" <br><br>
     
     ```
     (eg) classification("MNIST_test.csv", "MNIST_test_label.csv", "LAE", 4, "SVM")
