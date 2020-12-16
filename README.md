@@ -51,9 +51,9 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     
 
     __(eg)__ MNIST_train.csv : train data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
 
 
 * __Learning autoencoder models__
@@ -124,7 +124,7 @@ To reduce the dimensionality with PCA, simply run pca.R with MNIST and Fashion-M
     ```
     (eg) pca("MNIST_test.csv", 4)
     ```
-    __Output__: pca_code4.csv, pca_out4.csv
+    __Output__: pca_test_code4.csv, pca_test_out4.csv
 
 * __Performing classification analysis suing support vector machine and multiple logistic regression__        
 To classify MNIST and Fashion_MNIST data set, run classification.R with the codes of all models as the input data. Output will be the classification results.
