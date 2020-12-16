@@ -29,7 +29,7 @@ We proposed a restorable autoencoder model as a non-linear method for reducing d
 
 
 ### Python scripts tutorial
-* import the Python module 
+* __import the Python module__ 
     ```
     import autoencoder as auto    
     ```
@@ -51,9 +51,9 @@ To load MNIST or Fashion-MNISY data from keras, run load_data() with following p
     
 
     __(eg)__ MNIST_train.csv : train data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_train_label_csv:  train label data set of MNIST    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test.csv : test data set of MNIST   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIST_test_label_csv: test label data set of MNIST    
 
 
 * __Learning autoencoder models__
