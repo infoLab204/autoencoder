@@ -107,14 +107,14 @@ def proposed(type, train, test, code, epoch, batch) :
 
         total_summary_loss_data = np.vstack((total_summary_loss_data, summary_loss_data))
 
-        np.savetxt("proposed_total_loss.csv", total_summary_loss_data, delimiter=',', fmt='%s')
+        np.savetxt("total_loss.csv", total_summary_loss_data, delimiter=',', fmt='%s')
 
         # Get code(Z)
 
         get_z = K.function([autoencoder[model_index].layers[0].input],[autoencoder[model_index].layers[2].output])
         test_z = get_z([X_test])[0]
 
-        np.savetxt("proposed_test_code"+str(code)+".csv", test_z, delimiter=',')
+        np.savetxt("test_code.csv", test_z, delimiter=',')
 
         model_index = model_index + 1
 
@@ -159,7 +159,7 @@ def proposed(type, train, test, code, epoch, batch) :
             if((data_index + 1) % 1000 == 0) :
                 print(str(data_index + 1) + " finish!")
 
-        np.savetxt("proposed_test_out"+str(z_size)+".csv", test_recon, delimiter=',')
+        np.savetxt("test_out.csv", test_recon, delimiter=',')
      
 
     # Print total loss
@@ -242,15 +242,15 @@ def basic(type, train,test, code, epoch, batch) :
 
         total_summary_loss_data = np.vstack((total_summary_loss_data, summary_loss_data))
 
-        np.savetxt("basic_total_loss.csv", total_summary_loss_data, delimiter=',', fmt='%s')
+        np.savetxt("total_loss.csv", total_summary_loss_data, delimiter=',', fmt='%s')
 
-        np.savetxt("basic_test_out"+str(z_size)+".csv", test_output, delimiter=',')    
+        np.savetxt("test_out.csv", test_output, delimiter=',')    
 
         # Get code(Z)
         get_z = K.function([autoencoder[model_index].layers[0].input],[autoencoder[model_index].layers[1].output])
         test_z = get_z([X_test])[0]
 
-        np.savetxt("basic_test_code"+str(z_size)+".csv", test_z, delimiter=',')    
+        np.savetxt("test_code.csv", test_z, delimiter=',')    
 
         model_index = model_index + 1
 
@@ -393,16 +393,16 @@ def stacked(type, train, test, code,epoch, batch) :
 
         total_summary_loss_data = np.vstack((total_summary_loss_data, summary_loss_data))
 
-        np.savetxt("stacked_total_loss.csv", total_summary_loss_data, delimiter=',', fmt='%s')
+        np.savetxt("total_loss.csv", total_summary_loss_data, delimiter=',', fmt='%s')
 
-        np.savetxt("stacked_test_out"+str(z_size)+".csv", test_output, delimiter=',')    
+        np.savetxt("test_out.csv", test_output, delimiter=',')    
 
         # Get code(Z)
 
         get_z = K.function([autoencoder[model_index].layers[0].input],[autoencoder[model_index].layers[2].output])
         test_z = get_z([X_test])[0]
 
-        np.savetxt("stacked_test_code"+str(z_size)+".csv", test_z, delimiter=',')    
+        np.savetxt("test_code.csv", test_z, delimiter=',')    
 
         model_index = model_index + 1
 
@@ -414,26 +414,15 @@ def stacked(type, train, test, code,epoch, batch) :
     
     
     
-def recon(text, text_label, model, code) : 
+def recon(text, text_label,output) : 
 
     # Load data
     X_test = np.loadtxt(text, delimiter=',', dtype=None)
     Y_test = np.loadtxt(text_label, delimiter=',', dtype=None)
 
-    z_list=[code]
-
-    test_recon = [[]] * len(z_list)
-    
-    
-    if model=="LAE" : model="proposed" 
-    elif model=="BAE" : model="basic" 
-    elif model=="SAE"  : model="stacked"
-    else : model="pca"    
-        
-        
-    for z_index in range(len(z_list)) :
-        z_size = z_list[z_index]   
-        test_recon[z_index] = np.loadtxt(model + "_test_out" + str(z_size) + ".csv", delimiter=',', dtype=None)
+    test_recon = [[]] 
+       
+    test_recon[0] = np.loadtxt(output, delimiter=',', dtype=None)
         
             
     # Split each class
@@ -455,12 +444,11 @@ def recon(text, text_label, model, code) :
 
     X_test_selected = list(X_test[selected])
 
-    test_recon_selected = [[]] * len(z_list)
+    test_recon_selected = [[]] 
  
-    for z_index in range(len(z_list)) :
-        test_recon_selected[z_index] = list(test_recon[z_index][selected])
+    test_recon_selected[0] = list(test_recon[0][selected])
 
-    # Image consist of 5 rows
+    # Image consist of 2 rows
     # 1st row : Test data
     # 2nd row : seleced Model reconstruct
 
@@ -479,21 +467,14 @@ def recon(text, text_label, model, code) :
         pyplot.gray()
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
-
-    for z_index in range(len(z_list)) : 
-        z_size = z_list[z_index]
-        print("z size : " + str(z_size))
         
-        n = 10
-        pyplot.figure(figsize=(10, 5))
-        pyplot.subplots_adjust(top=1.15, bottom=0, right=1, left=0, hspace=0, wspace=0)
+        ax = pyplot.subplot(5, n, i + 1 + n)
+        pyplot.imshow(test_recon_selected[0][i].reshape(28, 28))
+        pyplot.gray()
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
 
-        for i in range(n) :
-            ax = pyplot.subplot(5, n, i + 1 + n)
-            pyplot.imshow(test_recon_selected[z_index][i].reshape(28, 28))
-            pyplot.gray()
-            ax.get_xaxis().set_visible(False)
-            ax.get_yaxis().set_visible(False)
+
             
     print("image reconstruction finish! \n")    
     
@@ -501,7 +482,7 @@ def recon(text, text_label, model, code) :
     
 
     
-def split(test, test_label, model, code) : 
+def split(test, test_label, output) : 
 
     # Load data
     X_test = np.loadtxt(test, delimiter=',', dtype=None)
@@ -509,19 +490,9 @@ def split(test, test_label, model, code) :
 
 #    z_list = [4, 8, 12, 16, 20]
 
-    z_list=[code]
-    test_recon = [[]] * len(z_list)
+    test_recon = [[]]
 
-    if model=="LAE" : model="proposed" 
-    elif model=="BAE" : model="basic" 
-    elif model=="SAE"  : model="stacked"
-    else : model="pca" 
-        
-   
-    for z_index in range(len(z_list)) :
-
-        z_size = z_list[z_index]
-        test_recon[z_index] = np.loadtxt(model+"_test_out" + str(z_size) + ".csv", delimiter=',', dtype=None)
+    test_recon[0] = np.loadtxt(output, delimiter=',', dtype=None)
         
 
     # Split each class
@@ -539,29 +510,26 @@ def split(test, test_label, model, code) :
                 LT[j] = [int(LT[j]) for LT[j] in LT[j]]   
 
     X_test_class = [[]] * class_num
-    test_recon_class = [[]] * len(z_list)
+    test_recon_class = [[]]
 
 
-    for z_index in range(len(z_list)) :
-        test_recon_class[z_index] = [[]] * class_num
+   
+    test_recon_class[0] = [[]] * class_num
      
 
 
     for class_index in range(class_num) :
         X_test_class[class_index] = X_test[LT[class_index]]
 
-        for z_index in range(len(z_list)) :
-            test_recon_class[z_index][class_index] = test_recon[z_index][LT[class_index]]
+       
+        test_recon_class[0][class_index] = test_recon[0][LT[class_index]]
 
     # Save data
     for class_index in range(10) :
         np.savetxt("MNIST_loss_class" + str(class_index) + ".csv", X_test_class[class_index], delimiter=',')
-
-        for z_index in range(len(z_list)) :
-            z_size = z_list[z_index]
-            np.savetxt(model+"_loss_out" + str(z_size) + "_class" + str(class_index) + ".csv", test_recon_class[z_index][class_index], delimiter=',')
+        np.savetxt("MNIST_out" + "_class" + str(class_index) + ".csv", test_recon_class[0][class_index], delimiter=',')
             
-    print("finish!")  
+    print("split class finish!")  
     
     
 # end of split()    

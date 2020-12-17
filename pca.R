@@ -33,8 +33,8 @@ pca <- function(test, code) {
           pca_test_recon <- data.frame(pca_test_recon)
           colnames(pca_test_recon) <- NULL
   
-          write.csv(pca_test_z, file = paste0("pca_test_code", comp_value, ".csv"), row.names = FALSE)
-          write.csv(pca_test_recon, file = paste0("pca_test_out", comp_value, ".csv"), row.names = FALSE)
+          write.csv(pca_test_z, file = paste0("test_code.csv"), row.names = FALSE)
+          write.csv(pca_test_recon, file = paste0("test_out.csv"), row.names = FALSE)
   
           loop_index = loop_index + 1
   
