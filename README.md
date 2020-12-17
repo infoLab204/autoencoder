@@ -142,7 +142,7 @@ To classify MNIST and Fashion_MNIST data set, run classification.R with the code
 
     
  * __Evaluating the loss function for the proposed model, SAE, BAE, and PCA__   
- To evaluate the loss function for all models, simply run loss.R with the output of split(), together with MNIST and Fashion-MNIST data sets. Output will be the loss function of all models.    
+ To evaluate the loss function for all models, simply run loss.R with the values of units in the output layer of each model. Ouput will be the loss fuction of all models.
  
    ```
     loss(ctest, coutput)
