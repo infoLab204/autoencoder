@@ -38,3 +38,6 @@ loss <- function(ctest, coutput) {
 
 
 }
+
+
+# 
