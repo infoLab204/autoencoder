@@ -74,7 +74,7 @@ To learn the three autoencoder models, run proposed(), basic(), and stacked() fo
     (eg) auto.proposed("digit", "MNIST_train.csv", "MNIST_test.csv", 4, 200, 100)
     ```
     __Output__: loss function and values of units in the code and output layers.     
-    __(eg)__ total_loss.csv, test_code4.csv, test_out4.csv    
+    __(eg)__ total_loss.csv&nbsp;&nbsp;&nbsp;&nbsp;test_code.csv&nbsp;&nbsp;&nbsp;&nbsp;test_out.csv    
     __(note)__ In a similar manner, learn basic() and stacked()    
 
 
